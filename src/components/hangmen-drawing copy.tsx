@@ -27,7 +27,6 @@ const VerticalLineSmall = styled.div`
   background-color: #6b6150; 
   margin-left: 280px;
 `
-
 const Head = styled.div`
   height:30px;
   width: 30px;
@@ -58,7 +57,6 @@ const RightArm = styled.div`
   margin-left: 320px;
   rotate: -30deg;
 `
-
 const LeftArm = styled.div`
   height:10px;
   width: 40px;
@@ -88,19 +86,25 @@ const LeftLeg = styled.div`
 rotate: -30deg;
  
 `
-export default function HangmenDrawing() {
+
+const bodyParts = [Head, Body, RightArm, LeftArm, RightLeg, LeftLeg]
+
+
+
+interface HangmanDrawingProps {
+  numberOfGuesses: number
+}
+export default function HangmenDrawing({ numberOfGuesses }: HangmanDrawingProps) {
   return <div style={{
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
   }}>
-    <Head />
-    <Body />
-    <RightArm />
-    <LeftArm />
-    <RightLeg />
-    <LeftLeg />
+    {bodyParts.slice(0, numberOfGuesses).map((BodyParty,index) => {
+      return<BodyParty key={index}/>
+
+    })}
     <VerticalLineSmall />
     <Horizontal />
     <Vertical />

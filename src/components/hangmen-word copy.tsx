@@ -11,9 +11,15 @@ const Wrapper = styled.div`
   text-transform: uppercase;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 `
-export default function HangmenWord() {
-  const word = 'Gilmar'
-  const guessedLetters= ['a','r']
+
+interface HangmanWordProps{
+  word: string
+  guessedLetters: string[]
+}
+
+export default function HangmenWord({word,guessedLetters}: HangmanWordProps) {
+
+
   return <Wrapper>
     {
       word.split("").map((letter, index) => (
