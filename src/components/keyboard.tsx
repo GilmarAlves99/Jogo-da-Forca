@@ -31,16 +31,28 @@ opacity: ${(p)=> (p.isActive ?  'null'   :  '0.3')};
 }
 `
 
-
-
-export default function Keyborad() {
+interface KeyBoardProps{
+activeLetters:string[]
+inactiveLetters: string[]
+addGuessedLetters:(letter:string) => void
+}
+export default function Keyboard({activeLetters,inactiveLetters,addGuessedLetters}: KeyBoardProps) {
   return (
     <Wrapper>
-      {Keys.map((letter) => (
-        <Button isActive={true} key={letter}
-        disabled
-        >{letter.toLocaleUpperCase()}</Button>
-      ))}
+      {Keys.map((letter) => {
+        const isActive= !activeLetters.includes(letter)
+        const isInactive= !inactiveLetters.includes(letter)
+        return (
+          <Button onClick={()=> addGuessedLetters(letter)}
+           isActive={isActive && isInactive}
+           disabled={!(isActive && isInactive)}
+           key={letter}>
+          {letter.toUpperCase()}
+          </Button>
+        )
+      }
+        
+      )}
     </Wrapper>
 
   )
