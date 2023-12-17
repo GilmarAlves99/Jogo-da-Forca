@@ -27,7 +27,7 @@ width:375px ;
 const words = ['gilmar', 'veronica', 'divina', 'gaspazia']
 
 function App() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
+  const [wordToGuess] = useState(() => {
     return words[Math.floor(Math.random() * words.length)]
   })
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
@@ -76,6 +76,8 @@ function App() {
   
   useKeyPress(addGuessedLetters);
   */
+
+
 
   return (
     <Wrapper>
