@@ -1,7 +1,32 @@
 import styled from "styled-components"
 
 const Keys = [
-  'a', 'b', 'c', 'd', 'f', ' g', 'j', ' k', 'l', ' m', ' n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'
+  'a',
+  'b',
+  'c',
+  'd',
+  'e',
+  'f',
+  'g',
+  'h',
+  'i',
+  'j',
+  'k',
+  'l',
+  'm',
+  'n',
+  'o',
+  'p',
+  'q',
+  'r',
+  's',
+  't',
+  'u',
+  'v',
+  'w',
+  'x',
+  'y',
+  'z' 
 ]
 const Wrapper = styled.div`
   display: grid;
@@ -38,7 +63,7 @@ interface KeyBoardProps {
   addGuessedLetters: (letter: string) => void
 }
 export default function Keyboard({
-  disabled=false,
+  disabled = false,
   activeLetters,
   inactiveLetters,
   addGuessedLetters }: KeyBoardProps) {
