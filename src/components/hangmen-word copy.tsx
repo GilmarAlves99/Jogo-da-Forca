@@ -13,11 +13,12 @@ const Wrapper = styled.div`
 `
 
 interface HangmanWordProps{
+  reveal:boolean
   word: string
   guessedLetters: string[]
 }
 
-export default function HangmenWord({word,guessedLetters}: HangmanWordProps) {
+export default function HangmenWord({reveal,word,guessedLetters}: HangmanWordProps) {
 
 
   return <Wrapper>
@@ -27,9 +28,11 @@ export default function HangmenWord({word,guessedLetters}: HangmanWordProps) {
         style={{borderBottom:'0.1em solid white',  width:' 30px'}} 
         key={index}
         ><span  
-          style={{visibility: guessedLetters.includes(letter)
+          style={{visibility: guessedLetters.includes(letter) || reveal
             ? 'visible'
-            : 'hidden'}}
+            : 'hidden',
+          color: !guessedLetters.includes(letter) && reveal ? 'rgb(200, 0, 0)' : 'white'
+          }}
           >
             {letter}</span>
    

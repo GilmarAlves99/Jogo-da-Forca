@@ -11,8 +11,8 @@ width:600px ;
 
 `
 
-const Button = styled.button<{isActive: boolean}>`
-opacity: ${(p)=> (p.isActive ?  'null'   :  '0.3')};
+const Button = styled.button<{ isActive: boolean }>`
+opacity: ${(p) => (p.isActive ? 'null' : '0.3')};
 
 &:focus:disabled{
   outline: none;
@@ -31,27 +31,32 @@ opacity: ${(p)=> (p.isActive ?  'null'   :  '0.3')};
 }
 `
 
-interface KeyBoardProps{
-activeLetters:string[]
-inactiveLetters: string[]
-addGuessedLetters:(letter:string) => void
+interface KeyBoardProps {
+  disabled?: boolean
+  activeLetters: string[]
+  inactiveLetters: string[]
+  addGuessedLetters: (letter: string) => void
 }
-export default function Keyboard({activeLetters,inactiveLetters,addGuessedLetters}: KeyBoardProps) {
+export default function Keyboard({
+  disabled=false,
+  activeLetters,
+  inactiveLetters,
+  addGuessedLetters }: KeyBoardProps) {
   return (
     <Wrapper>
       {Keys.map((letter) => {
-        const isActive= !activeLetters.includes(letter)
-        const isInactive= !inactiveLetters.includes(letter)
+        const isActive = !activeLetters.includes(letter)
+        const isInactive = !inactiveLetters.includes(letter)
         return (
-          <Button onClick={()=> addGuessedLetters(letter)}
-           isActive={isActive && isInactive}
-           disabled={!(isActive && isInactive)}
-           key={letter}>
-          {letter.toUpperCase()}
+          <Button onClick={() => addGuessedLetters(letter)}
+            isActive={isActive && isInactive}
+            disabled={!(isActive && isInactive) || disabled}
+            key={letter}>
+            {letter.toUpperCase()}
           </Button>
         )
       }
-        
+
       )}
     </Wrapper>
 
